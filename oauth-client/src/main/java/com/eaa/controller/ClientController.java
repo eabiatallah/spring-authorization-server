@@ -18,8 +18,17 @@ public class ClientController {
     @Autowired
     private OAuth2AuthorizedClientService auth2AuthorizedClientService;
 
+    @GetMapping("/token")
+    public String getToken(Principal principal) {
+        String accessToken = auth2AuthorizedClientService
+                .loadAuthorizedClient("reg-client", principal.getName())
+                .getAccessToken().getTokenValue();
+        return accessToken;
+    }
+
     @GetMapping("/message")
     public String message(Principal principal) {
+        System.out.println("principal.getName() -->" + principal.getName());
 
         var restTemplate = new RestTemplate();
 
@@ -27,6 +36,7 @@ public class ClientController {
         String accessToken = auth2AuthorizedClientService
                 .loadAuthorizedClient("reg-client", principal.getName())
                 .getAccessToken().getTokenValue();
+        System.out.println("access Token = " + accessToken);
         httpHeaders.set("Authorization", "Bearer " + accessToken);
 
         HttpEntity<String> entity = new HttpEntity<>(httpHeaders);

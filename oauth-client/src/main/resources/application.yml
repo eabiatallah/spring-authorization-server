@@ -9,10 +9,10 @@ spring:
           spring:
             issuer-uri: http://localhost:8080
         registration:
-          reg-client:
+          reg-client: # registration Id
             provider: spring
             client-id: demo
-            client-secret: "{noop}secret"
+            client-secret: "secret"
             authorization-grant-type: authorization_code
             client-authentication-method: client_secret_basic
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"

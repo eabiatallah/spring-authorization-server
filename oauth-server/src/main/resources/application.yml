@@ -12,6 +12,6 @@ spring:
               client-id: demo
               client-secret: "{noop}secret"
               authorization-grant-types: client_credentials,authorization_code,refresh_token
-              redirect-uris: http://localhost:8082/login/oauth2/code/reg-client
+              redirect-uris: http://127.0.0.1:8082/login/oauth2/code/reg-client
               scopes: user.read,user.write,openid
               client-authentication-methods: client_secret_basic
