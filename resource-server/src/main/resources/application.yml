@@ -1,0 +1,11 @@
+server:
+  port: 8181
+
+
+spring:
+  output.ansi.enabled: ALWAYS
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://localhost:8080
